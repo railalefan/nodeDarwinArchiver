@@ -1,0 +1,15 @@
+{
+  "stomp":{
+    "host": "darwin-dist-44ae45.nationalrail.co.uk",
+    "port": 61613,
+    "connectHeaders":{
+      "login": "YOUR_STOMP_USERNAME",
+      "passcode": "YOUR_STOMP_PASSWORD"
+    }
+  },
+  "soap":{
+    "accessToken":"YOUR_OPENLDBSVWS_ACCESS_TOKEN"
+  },
+  "logErrors":true,
+  "midnightExit":false
+}
