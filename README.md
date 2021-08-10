@@ -9,10 +9,7 @@ https://opendata.nationalrail.co.uk/
 Requires an access token for OpenLDBSVWS (Staff Version) Darwin Web Service (SOAP)
 http://openldbsv.nationalrail.co.uk/
 
-The script consumes schedule related messages from the Darwin Push Port feed (using a JMS selector of MessageType=SC)
-watching for deactivated messages normally indicating that a train has completed its journey and no further updates
-are expected. The final state of the Darwin database for the train is then obtained by a web services call to
-GetServiceDetailsByRID and logged to console (stdout).
+The script consumes schedule related messages from the Darwin Push Port feed (using a JMS selector of MessageType=SC) watching for deactivated messages normally indicating that a train has completed its journey and no further updates are expected. The final state of the Darwin database for the train is then obtained by a web services call to GetServiceDetailsByRID and logged to console (stdout).
 
 NPM Dependencies
 ================
@@ -39,9 +36,7 @@ With data being received, run the script with output redirection, or as required
 Background Daily Logging
 ========================
 
-With midnightExit set to true the script will terminate after processing the first batch of deactivations received post-midnight.
-A shell script can then be used to initiate / restart the process (including a pause incase of connectivity issues) with a date
-based log filename for example:
+With midnightExit set to true the script will terminate after processing the first batch of deactivations received post-midnight. A shell script can then be used to initiate / restart the process (including a pause incase of connectivity issues) with a date based log filename for example:
 
     #!/bin/sh
     while true
@@ -61,13 +56,9 @@ Notes
 
 * Weekday logs grow to approximately 170MB (around 23,000 schedules) and compress by around 90%.
 
-* The generated dataset should not be considered complete.  The period between deactivation and persistence of a service
-in the Darwin environment is not documented and very occasionally calls to GetServiceDetailsByRID for a recently
-deactivated schedule fail (to ensure clean logs set logErrors to false).
+* The generated dataset should not be considered complete.  The period between deactivation and persistence of a service in the Darwin environment is not documented and very occasionally calls to GetServiceDetailsByRID for a recently deactivated schedule fail (to ensure clean logs set logErrors to false).
 
-* Darwin batch processes deactivations approximately every 60s, when around 20-30 deactivated messages are
-received within 1-2s.  The script queues requests to OpenLDBSVWS which are then made at 1s intervals
-to avoid triggering the rate limiter of free tier access to the web services.
+* Darwin batch processes deactivations approximately every 60s, when around 20-30 deactivated messages are received within 1-2s.  The script queues requests to OpenLDBSVWS which are then made at 1s intervals to avoid triggering the rate limiter of free tier access to the web services.
 
 Links
 =====
