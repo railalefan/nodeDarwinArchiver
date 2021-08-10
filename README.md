@@ -10,12 +10,11 @@ Port (STOMP) https://opendata.nationalrail.co.uk/
 Requires an access token for OpenLDBSVWS (Staff Version) Darwin Web Service
 (SOAP) http://openldbsv.nationalrail.co.uk/
 
-The script consumes schedule related messages from the Darwin Push Port feed
-(using a JMS selector of MessageType=SC) watching for deactivated messages
-normally indicating that a train has completed its journey and no further
-updates are expected. The final state of the Darwin database for the train is
-then obtained by a web services call to GetServiceDetailsByRID and logged to
-console (stdout).
+The script consumes schedule related messages (MessageType=SC) from the Darwin
+Push Port feed watching for deactivated messages normally indicating that a
+train has completed its journey and no further updates are expected. The final
+state of the Darwin database for the train is then obtained by a web services
+call to GetServiceDetailsByRID and logged to console (stdout).
 
 NPM Dependencies
 ================
